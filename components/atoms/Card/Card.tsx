@@ -1,5 +1,5 @@
+import { useTheme } from "@/contexts/ThemeContext";
 import styles from "./Card.module.css";
-import { useTheme } from "@/pages";
 
 interface CardProps extends React.ComponentPropsWithRef<"div"> {}
 

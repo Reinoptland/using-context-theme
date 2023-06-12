@@ -4,17 +4,13 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Navbar from "@/components/atoms/Navbar";
 import CardContainer from "@/components/CardContainer/CardContainer";
-import { useContext, useState } from "react";
-import { Theme } from "@/entities/theme";
-import { createContext } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const ThemeContext = createContext<{ theme: Theme }>({ theme: "Light" });
-export const useTheme = () => useContext(ThemeContext);
-
 export default function Home() {
-  const [theme, setTheme] = useState<Theme>("Light");
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <>
       <Head>
@@ -23,20 +19,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ThemeContext.Provider value={{ theme: theme }}>
-        <main className={`${styles.main} ${inter.className}`}>
-          <Navbar theme={theme}>
-            <button
-              onClick={() => {
-                setTheme(theme === "Light" ? "Dark" : "Light");
-              }}
-            >
-              {theme}
-            </button>
-          </Navbar>
-          <CardContainer />
-        </main>
-      </ThemeContext.Provider>
+      <main className={`${styles.main} ${inter.className}`}>
+        <Navbar>
+          <button onClick={toggleTheme}>{theme}</button>
+        </Navbar>
+        <CardContainer />
+      </main>
     </>
   );
 }

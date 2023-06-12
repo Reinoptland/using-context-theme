@@ -1,12 +1,11 @@
 import { Theme } from "@/entities/theme";
 import styles from "./Navbar.module.css";
+import { useTheme } from "@/contexts/ThemeContext";
 
-interface NavbarProps extends React.ComponentPropsWithRef<"nav"> {
-  // add more props
-  theme: Theme;
-}
+interface NavbarProps extends React.ComponentPropsWithRef<"nav"> {}
 
-const Navbar: React.FC<NavbarProps> = ({ children, theme, ...props }) => {
+const Navbar: React.FC<NavbarProps> = ({ children, ...props }) => {
+  const { theme } = useTheme();
   return (
     <nav
       {...props}
