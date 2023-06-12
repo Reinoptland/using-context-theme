@@ -1,12 +1,10 @@
-import { Theme } from "@/entities/theme";
 import styles from "./Card.module.css";
-import { useContext } from "react";
-import { ThemeContext } from "@/pages";
+import { useTheme } from "@/pages";
 
 interface CardProps extends React.ComponentPropsWithRef<"div"> {}
 
 const Card: React.FC<CardProps> = ({ children, ...props }) => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
   return (
     <div {...props} className={styles[`card${theme}`]}>
       {children}

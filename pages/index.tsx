@@ -4,13 +4,14 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Navbar from "@/components/atoms/Navbar";
 import CardContainer from "@/components/CardContainer/CardContainer";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Theme } from "@/entities/theme";
 import { createContext } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const ThemeContext = createContext<{ theme: Theme }>({ theme: "Light" });
+export const useTheme = () => useContext(ThemeContext);
 
 export default function Home() {
   const [theme, setTheme] = useState<Theme>("Light");
