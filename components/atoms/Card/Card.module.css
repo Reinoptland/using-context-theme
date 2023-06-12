@@ -1,0 +1,9 @@
+.cardLight {
+  background-color: antiquewhite;
+  padding: 20px;
+}
+
+.cardDark {
+  background-color: darkorchid;
+  padding: 20px;
+}

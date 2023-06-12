@@ -1,0 +1,11 @@
+.navbar {
+  padding: 40px;
+}
+
+.navbarLight {
+  background-color: aliceblue;
+}
+
+.navbarDark {
+  background-color: darkslategray;
+}

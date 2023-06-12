@@ -1,0 +1,9 @@
+.cardContainerLight {
+  background-color: azure;
+  padding: 20px;
+}
+
+.cardContainerDark {
+  background-color: black;
+  padding: 20px;
+}
