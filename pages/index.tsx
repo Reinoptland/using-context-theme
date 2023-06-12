@@ -6,8 +6,11 @@ import Navbar from "@/components/atoms/Navbar";
 import CardContainer from "@/components/CardContainer/CardContainer";
 import { useState } from "react";
 import { Theme } from "@/entities/theme";
+import { createContext } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const ThemeContext = createContext<{ theme: Theme }>({ theme: "Light" });
 
 export default function Home() {
   const [theme, setTheme] = useState<Theme>("Light");
@@ -19,18 +22,20 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <Navbar theme={theme}>
-          <button
-            onClick={() => {
-              setTheme(theme === "Light" ? "Dark" : "Light");
-            }}
-          >
-            {theme}
-          </button>
-        </Navbar>
-        <CardContainer theme={theme} />
-      </main>
+      <ThemeContext.Provider value={{ theme: theme }}>
+        <main className={`${styles.main} ${inter.className}`}>
+          <Navbar theme={theme}>
+            <button
+              onClick={() => {
+                setTheme(theme === "Light" ? "Dark" : "Light");
+              }}
+            >
+              {theme}
+            </button>
+          </Navbar>
+          <CardContainer />
+        </main>
+      </ThemeContext.Provider>
     </>
   );
 }

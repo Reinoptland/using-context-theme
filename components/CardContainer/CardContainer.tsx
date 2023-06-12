@@ -4,16 +4,15 @@ import Card from "../atoms/Card";
 import styles from "./CardContainer.module.css";
 import ProductCard from "../ProductCard/ProductCard";
 
-interface CardContainerProps {
-  theme: Theme;
-}
+interface CardContainerProps {}
 
-const CardContainer: React.FC<CardContainerProps> = ({ theme }) => {
+const CardContainer: React.FC<CardContainerProps> = ({}) => {
+  console.log("RERENDER??");
   return (
     <div>
-      <ProductCard buttonText="Click me" theme={theme} />
-      <ProductCard buttonText="Please friend, click me" theme={theme} />
-      <ProductCard buttonText="Hi" theme={theme} />
+      <ProductCard buttonText="Click me" />
+      <ProductCard buttonText="Please friend, click me" />
+      <ProductCard buttonText="Hi" />
     </div>
   );
 };

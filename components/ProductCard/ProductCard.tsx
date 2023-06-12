@@ -3,13 +3,12 @@ import Button from "../atoms/Button";
 import Card from "../atoms/Card";
 
 interface ProductCardProps {
-  theme: Theme;
   buttonText: string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ theme, buttonText }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ buttonText }) => {
   return (
-    <Card theme={theme}>
+    <Card>
       <Button>{buttonText}</Button>
     </Card>
   );
